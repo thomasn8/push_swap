@@ -6,7 +6,7 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 10:48:24 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/11 17:05:23 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/11 17:22:45 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	rotate_both(t_int_stack *a, t_int_stack *b)
 	if (len_a > 1)
 	{
 		temp_a = a->num_list[0];
-		stack_shift_one_up(a);
+		shift_one_up(a);
 		a->num_list[len_a - 1] = temp_a;
 	}
 	len_b = stack_length(b->num_list);
