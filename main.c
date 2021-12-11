@@ -6,13 +6,13 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 21:21:47 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/11 16:59:16 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/11 17:24:50 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	choose_algo(t_int_stack *a, t_int_stack *b)
+void	choose_sorting_algo(t_int_stack *a, t_int_stack *b)
 {
 	int	total;
 
@@ -45,7 +45,7 @@ int	main(int ac, char **av)
 	num_list = arg_checker(arg_list, num_list, arg_split);
 	stack_init(&a, num_list, 'a');
 	stack_init(&b, num_list, 'b');
-	choose_algo(&a, &b);
+	choose_sorting_algo(&a, &b);
 	free(num_list);
 	free(a.num_list);
 	free(b.num_list);
