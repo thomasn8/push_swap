@@ -6,7 +6,7 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 13:47:07 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/11 16:53:58 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/11 17:17:22 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ int	max_num_index(t_int_stack *stack)
 
 int	direction_to_top(t_int_stack *stack, int i)
 {
-	int	length;
+	int	len;
 	int	middle;
 	int	direction;
 
-	length = stack_length(stack->num_list);
-	middle = length / 2;
+	len = stack_length(stack->num_list);
+	middle = len / 2;
 	if (i <= middle)
 		direction = -1;
 	else
@@ -81,24 +81,26 @@ void	best_rotate(t_int_stack *stack, int i)
 	}
 }
 
-int	is_sorted_unrotated(t_int_stack *stack_a, int min, int max)
+int	is_sorted_unrotated(t_int_stack *stack, int min, int max)
 {
 	int	i;
 	int	len;
 
 	i = 0;
-	len = stack_length(stack_a->num_list);
-	while (stack_a->num_list[i] != NULL)
+	len = stack_length(stack->num_list);
+	while (stack->num_list[i] != NULL)
 	{
-		if (stack_a->num_list[i + 1] == NULL)
+		if (stack->num_list[i + 1] == NULL)
 			break ;
-		if ((*stack_a->num_list[i] > *stack_a->num_list[i + 1])
-			&& !((*stack_a->num_list[i] == max) && (*stack_a->num_list[i + 1] == min)))
+		if ((*stack->num_list[i] > *stack->num_list[i + 1])
+			&& !((*stack->num_list[i] == max)
+				&& (*stack->num_list[i + 1] == min)))
 			return (-1);
 		i++;
 	}
-	if ((*stack_a->num_list[0] < *stack_a->num_list[len - 1])
-		&& !((*stack_a->num_list[0] == min) && (*stack_a->num_list[len - 1] == max)))
+	if ((*stack->num_list[0] < *stack->num_list[len - 1])
+		&& !((*stack->num_list[0] == min)
+			&& (*stack->num_list[len - 1] == max)))
 		return (-1);
 	return (0);
 }

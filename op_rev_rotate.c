@@ -6,36 +6,36 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 10:48:24 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/11 16:41:39 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/11 17:06:16 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	stack_shift_one_down(t_int_stack *stack)
+static void	shift_one_down(t_int_stack *stack)
 {
 	int	i;
-	int	n;
+	int	len;
 
 	i = 0;
-	n = stack_length(stack->num_list);
-	while (n-- > 1)
+	len = stack_length(stack->num_list);
+	while (len-- > 1)
 	{
-		stack->num_list[n] = stack->num_list[n - 1];
+		stack->num_list[len] = stack->num_list[len - 1];
 		i++;
 	}
 }
 
 int	rev_rotate_one(t_int_stack *stack)
 {
-	int	n;
+	int	len;
 	int	*temp;
 
-	n = stack_length(stack->num_list);
-	if (n > 1)
+	len = stack_length(stack->num_list);
+	if (len > 1)
 	{
-		temp = stack->num_list[n - 1];
-		stack_shift_one_down(stack);
+		temp = stack->num_list[len - 1];
+		shift_one_down(stack);
 		stack->num_list[0] = temp;
 	}
 	ft_putstr_fd("rr", 1);
@@ -44,26 +44,26 @@ int	rev_rotate_one(t_int_stack *stack)
 	return (0);
 }
 
-int	rev_rotate_both(t_int_stack *stack_a, t_int_stack *stack_b)
+int	rev_rotate_both(t_int_stack *a, t_int_stack *b)
 {
-	int	n_a;
-	int	n_b;
+	int	len_a;
+	int	len_b;
 	int	*temp_a;
 	int	*temp_b;
 
-	n_a = stack_length(stack_a->num_list);
-	if (n_a > 1)
+	len_a = stack_length(a->num_list);
+	if (len_a > 1)
 	{
-		temp_a = stack_a->num_list[n_a - 1];
-		stack_shift_one_down(stack_a);
-		stack_a->num_list[0] = temp_a;
+		temp_a = a->num_list[len_a - 1];
+		shift_one_down(a);
+		a->num_list[0] = temp_a;
 	}
-	n_b = stack_length(stack_b->num_list);
-	if (n_b > 1)
+	len_b = stack_length(b->num_list);
+	if (len_b > 1)
 	{
-		temp_b = stack_b->num_list[n_b - 1];
-		stack_shift_one_down(stack_b);
-		stack_b->num_list[0] = temp_b;
+		temp_b = b->num_list[len_b - 1];
+		shift_one_down(b);
+		b->num_list[0] = temp_b;
 	}
 	ft_putstr_fd("rrr\n", 1);
 	return (0);

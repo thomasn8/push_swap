@@ -6,7 +6,7 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 11:30:54 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/11 16:52:22 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/11 17:09:22 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,16 @@ void	print_stack(t_int_stack *stack, char name)
 	ft_printf("\n");
 }
 
-int	is_sorted(t_int_stack *stack_a)
+int	is_sorted(t_int_stack *stack)
 {
 	int	i;
 
 	i = 0;
-	while (stack_a->num_list[i] != NULL)
+	while (stack->num_list[i] != NULL)
 	{
-		if (stack_a->num_list[i + 1] == NULL)
+		if (stack->num_list[i + 1] == NULL)
 			return (0);
-		if ((*stack_a->num_list[i] > *stack_a->num_list[i + 1]))
+		if ((*stack->num_list[i] > *stack->num_list[i + 1]))
 			return (-1);
 		i++;
 	}

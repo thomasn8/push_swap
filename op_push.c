@@ -6,7 +6,7 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 10:48:24 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/11 16:40:57 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/11 17:06:37 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,33 +27,33 @@ static void	stack_shift_one_up(t_int_stack *stack)
 static void	stack_shift_one_down(t_int_stack *stack)
 {
 	int	i;
-	int	n;
+	int	len;
 
 	i = 0;
-	n = stack_length(stack->num_list);
-	while (n--)
+	len = stack_length(stack->num_list);
+	while (len--)
 	{
-		stack->num_list[n + 1] = stack->num_list[n];
+		stack->num_list[len + 1] = stack->num_list[len];
 		i++;
 	}
 }
 
-int	push(t_int_stack *stack_dst, t_int_stack *stack_src)
+int	push(t_int_stack *dst, t_int_stack *src)
 {
 	int	src_exists;
 	int	*temp;
 
 	src_exists = 0;
-	if (*stack_src->num_list)
+	if (*src->num_list)
 	{
-		temp = *stack_src->num_list;
-		stack_shift_one_up(stack_src);
-		stack_shift_one_down(stack_dst);
-		*stack_dst->num_list = temp;
+		temp = *src->num_list;
+		stack_shift_one_up(src);
+		stack_shift_one_down(dst);
+		*dst->num_list = temp;
 		src_exists = 1;
 	}
 	ft_putchar_fd('p', 1);
-	ft_putchar_fd(stack_dst->name, 1);
+	ft_putchar_fd(dst->name, 1);
 	ft_putchar_fd('\n', 1);
 	if (src_exists)
 		return (0);

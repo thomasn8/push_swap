@@ -6,109 +6,109 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 21:37:06 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/11 16:45:42 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/11 17:12:26 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	divide_stack(t_int_stack *stack_a, t_int_stack *stack_b, int len)
+static void	divide_stack(t_int_stack *a, t_int_stack *b, int len)
 {
 	int	min;
 	int	max;
 
-	min = *stack_a->num_list[min_num_index(stack_a)];
-	max = *stack_a->num_list[max_num_index(stack_a)];
+	min = *a->num_list[min_num_index(a)];
+	max = *a->num_list[max_num_index(a)];
 	len = len / 2;
 	while (len--)
 	{	
-		if (*stack_a->num_list[0] == min || *stack_a->num_list[0] == max)
+		if (*a->num_list[0] == min || *a->num_list[0] == max)
 		{
-			rotate_one(stack_a);
+			rotate_one(a);
 			len++;
 		}
 		else
-			push(stack_b, stack_a);
+			push(b, a);
 	}
 }
 
-static void	parallel_sort(t_int_stack *stack_a, t_int_stack *stack_b)
+static void	parallel_sort(t_int_stack *a, t_int_stack *b)
 {
 	int	min_a;
 	int	max_a;
 	int	min_b;
 	int	max_b;
 
-	min_a = *stack_a->num_list[min_num_index(stack_a)];
-	max_a = *stack_a->num_list[max_num_index(stack_a)];
-	min_b = *stack_a->num_list[min_num_index(stack_b)];
-	max_b = *stack_a->num_list[max_num_index(stack_b)];
-	while ((is_sorted_unrotated(stack_a, min_a, max_a) < 0)
-		&& (is_sorted_unrotated(stack_b, min_b, max_b) < 0))
+	min_a = *a->num_list[min_num_index(a)];
+	max_a = *a->num_list[max_num_index(a)];
+	min_b = *a->num_list[min_num_index(b)];
+	max_b = *a->num_list[max_num_index(b)];
+	while ((is_sorted_unrotated(a, min_a, max_a) < 0)
+		&& (is_sorted_unrotated(b, min_b, max_b) < 0))
 	{
-		if ((*stack_a->num_list[0] > *stack_a->num_list[1])
-			&& (*stack_b->num_list[0] > *stack_b->num_list[1])
-			&& !(*stack_a->num_list[0] == max_a && *stack_a->num_list[1] == min_a)
-			&& !(*stack_b->num_list[0] == max_b && *stack_b->num_list[1] == min_b))
-			swap_both(stack_a, stack_b);
-		if (*stack_a->num_list[0] > *stack_a->num_list[1]
-			&& !(*stack_a->num_list[0] == max_a && *stack_a->num_list[1] == min_a))
-			swap_one(stack_a);
-		if (*stack_b->num_list[0] > *stack_b->num_list[1]
-			&& !(*stack_b->num_list[0] == max_b && *stack_b->num_list[1] == min_b))
-			swap_one(stack_b);
-		rotate_both(stack_a, stack_b);
+		if ((*a->num_list[0] > *a->num_list[1])
+			&& (*b->num_list[0] > *b->num_list[1])
+			&& !(*a->num_list[0] == max_a && *a->num_list[1] == min_a)
+			&& !(*b->num_list[0] == max_b && *b->num_list[1] == min_b))
+			swap_both(a, b);
+		if (*a->num_list[0] > *a->num_list[1]
+			&& !(*a->num_list[0] == max_a && *a->num_list[1] == min_a))
+			swap_one(a);
+		if (*b->num_list[0] > *b->num_list[1]
+			&& !(*b->num_list[0] == max_b && *b->num_list[1] == min_b))
+			swap_one(b);
+		rotate_both(a, b);
 	}
 }
 
-static void	finish_sort(t_int_stack *stack_a, t_int_stack *stack_b, int len)
+static void	finish_sort(t_int_stack *a, t_int_stack *b, int len)
 {
 	int	min_a;
 	int	max_a;
 	int	min_b;
 	int	max_b;
 
-	min_a = *stack_a->num_list[min_num_index(stack_a)];
-	max_a = *stack_a->num_list[max_num_index(stack_a)];
-	min_b = *stack_b->num_list[min_num_index(stack_b)];
-	max_b = *stack_b->num_list[max_num_index(stack_b)];
-	if (is_sorted_unrotated(stack_a, min_a, max_a) < 0)
+	min_a = *a->num_list[min_num_index(a)];
+	max_a = *a->num_list[max_num_index(a)];
+	min_b = *b->num_list[min_num_index(b)];
+	max_b = *b->num_list[max_num_index(b)];
+	if (is_sorted_unrotated(a, min_a, max_a) < 0)
 	{
 		if (len < 29)
-			one_stack_swapping(stack_a);
+			one_stack_swapping(a);
 		else
-			insertion_sort(stack_a, stack_b);
+			insertion_sort(a, b);
 	}
-	if (is_sorted_unrotated(stack_b, min_b, max_b) < 0)
+	if (is_sorted_unrotated(b, min_b, max_b) < 0)
 	{	
 		if (len < 29)
-			one_stack_swapping(stack_b);
+			one_stack_swapping(b);
 		else
-			insertion_sort(stack_b, stack_a);
+			insertion_sort(b, a);
 	}
 }
 
-void	divide_and_sort(t_int_stack *stack_a, t_int_stack *stack_b)
+void	divide_and_sort(t_int_stack *a, t_int_stack *b)
 {
 	int	len;
 	int	i;
 
-	len = stack_length(stack_a->num_list);
-	divide_stack(stack_a, stack_b, len);
-	parallel_sort(stack_a, stack_b);
-	finish_sort(stack_a, stack_b, len);
-	while (stack_b->num_list[0] != NULL)
+	len = stack_length(a->num_list);
+	divide_stack(a, b, len);
+	parallel_sort(a, b);
+	finish_sort(a, b, len);
+	while (b->num_list[0] != NULL)
 	{
-		if ((*stack_b->num_list[0] > *stack_a->num_list[0])
-			&& (*stack_b->num_list[0] < *stack_a->num_list[1]))
+		if ((*b->num_list[0] > *a->num_list[0])
+			&& (*b->num_list[0] < *a->num_list[1]))
 		{
-			rotate_one(stack_a);
-			push(stack_a, stack_b);
+			rotate_one(a);
+			push(a, b);
 		}
 		else
-			rotate_one(stack_a);
+			rotate_one(a);
 	}
-	i = min_num_index(stack_a);
-	while (is_sorted(stack_a) < 0)
-		best_rotate(stack_a, i);
+	i = min_num_index(a);
+	while (is_sorted(a) < 0)
+		best_rotate(a, i);
 }

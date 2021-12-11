@@ -6,29 +6,29 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 21:21:47 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/11 12:56:14 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:59:16 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	choose_algo(t_int_stack *stack_a, t_int_stack *stack_b)
+void	choose_algo(t_int_stack *a, t_int_stack *b)
 {
 	int	total;
 
-	total = stack_length(stack_a->num_list);
+	total = stack_length(a->num_list);
 	if (total == 2)
-		sort_2num(stack_a);
+		sort_2num(a);
 	if (total == 3)
-		sort_3num(stack_a);
+		sort_3num(a);
 	if (total == 4)
-		sort_4num(stack_a, stack_b);
+		sort_4num(a, b);
 	if (total == 5)
-		sort_5num(stack_a, stack_b);
+		sort_5num(a, b);
 	if (total >= 6 && total <= 7)
-		one_stack_swapping(stack_a);
+		one_stack_swapping(a);
 	if (total > 7)
-		divide_and_sort(stack_a, stack_b);
+		divide_and_sort(a, b);
 }
 
 int	main(int ac, char **av)
@@ -36,18 +36,18 @@ int	main(int ac, char **av)
 	char			**arg_list;
 	int				arg_split;
 	int				*num_list;
-	t_int_stack		stack_a;
-	t_int_stack		stack_b;
+	t_int_stack		a;
+	t_int_stack		b;
 
 	arg_split = 0;
 	num_list = NULL;
 	arg_list = arg_list_create(ac, av, &arg_split);
 	num_list = arg_checker(arg_list, num_list, arg_split);
-	stack_init(&stack_a, num_list, 'a');
-	stack_init(&stack_b, num_list, 'b');
-	choose_algo(&stack_a, &stack_b);
+	stack_init(&a, num_list, 'a');
+	stack_init(&b, num_list, 'b');
+	choose_algo(&a, &b);
 	free(num_list);
-	free(stack_a.num_list);
-	free(stack_b.num_list);
+	free(a.num_list);
+	free(b.num_list);
 	return (0);
 }
