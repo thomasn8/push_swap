@@ -6,13 +6,12 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 13:47:07 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/11 01:52:54 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/11 13:02:33 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// get index of min num in list
 int	min_num_index(t_int_stack *stack)
 {
 	int **list;
@@ -31,7 +30,6 @@ int	min_num_index(t_int_stack *stack)
 	return (min);
 }
 
-// get index of max num in list
 int	max_num_index(t_int_stack *stack)
 {
 	int **list;
@@ -50,7 +48,6 @@ int	max_num_index(t_int_stack *stack)
 	return (max);
 }
 
-// give the closest direction from num[i] to the top of the stack : (-1 = left) | (1 = right)
 int	direction_to_top(t_int_stack *stack, int i)
 {
 	int	length;
@@ -66,7 +63,6 @@ int	direction_to_top(t_int_stack *stack, int i)
 	return (direction);
 }
 
-// rotate the stack in the closest direction to bring num[i] at the top of the stack
 void	best_rotate(t_int_stack *stack, int i)
 {
 	int direction;
@@ -85,8 +81,6 @@ void	best_rotate(t_int_stack *stack, int i)
 	}
 }
 
-// check si la stack est triée mais permet qu'elle ne soit pas dans la bonne rotation
-// c-a-d qu'il y ait 1 occurence de num pas dans l'ordre, si ces num sont max suivi de min
 int	is_sorted_unrotated(t_int_stack *stack_a, int min, int max)
 {
 	int i;
@@ -103,9 +97,6 @@ int	is_sorted_unrotated(t_int_stack *stack_a, int min, int max)
 			return (-1);
 		i++;
 	}
-	// liste pas triée si a[0] < a[end]
-	// car par dans la bonne rotation et a[0] sera après a[end] dans la bonne rotation
-	// (sauf si a[0] et a[end] sont effectivement les min et max de la list)
 	if ((*stack_a->num_list[0] < *stack_a->num_list[len-1])
 		&& !((*stack_a->num_list[0] == min) && (*stack_a->num_list[len-1] == max)))
 		return (-1);

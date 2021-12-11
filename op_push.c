@@ -6,13 +6,12 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 10:48:24 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/06 20:56:30 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/11 12:56:46 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// décale tout d'un rang vers le début de la pile (écrase le premier num | passe le dernier num en NULL)
 static void	stack_shift_one_up(t_int_stack *stack)
 {
 	int	i;
@@ -25,7 +24,6 @@ static void	stack_shift_one_up(t_int_stack *stack)
 	}
 }
 
-// décale tout d'un rang vers la fin de la pile (écrase le premier NULL de fin de pile)
 static void	stack_shift_one_down(t_int_stack *stack)
 {
 	int	i;

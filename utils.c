@@ -6,7 +6,7 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 11:30:54 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/08 20:23:50 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/11 13:01:56 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@ void	error(int error_code)
 {
 	ft_putstr_fd(RED, 2);
 	ft_putstr_fd("Error\n", 2);
-	// if (error_code == NULL_ARG)
-	// 	ft_putstr_fd("null argument\n", 2);
-	// if (error_code == INVALID_ARG)
-	// 	ft_putstr_fd("invalid argument(s)\n", 2);
-	// if (error_code == DUPLICATES_ARG)
-	// 	ft_putstr_fd("duplicates arguments\n", 2);
 	exit(error_code);
 }
 

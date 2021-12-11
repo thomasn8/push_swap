@@ -6,23 +6,11 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 21:37:06 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/11 12:49:53 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/11 12:59:06 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/* Pseudo code
-	// 1. push la moitié de a sur b (pas min et max)
-	// 2. while a && b !sorted
-		// 2.1 parallel sort (rotate_both / swap_both)
-		// => a ou b est sorted
-	// 3. while 2ème stack !sorted
-		// 3.1 sort 1 stack
-	// 4. while b a des num
-		// 4.1 push les nums de b sur a au bon endroit (1 seule passe)
-	// 5. finit la rotation de a pour mettre les num dans l'ordre
-*/
 
 static void divide_stack(t_int_stack *stack_a, t_int_stack *stack_b, int len)
 {
@@ -107,17 +95,9 @@ void	divide_and_sort(t_int_stack *stack_a, t_int_stack *stack_b)
 	int i;
 	
 	len = stack_length(stack_a->num_list);
-	
-	// 1. push la moitié de a sur b
 	divide_stack(stack_a, stack_b, len);
-	
-	// 2. trie les 2 stack en parallel jusqu'a ce qu'une des deux soit intégralement triée
 	parallel_sort(stack_a, stack_b);
-
-	// 3. finit le trie sur la stack pas triée complètement
 	finish_sort(stack_a, stack_b, len);
-	
-	// 4. push les nums de b sur a au bon endroit (1 seule passe)
 	while (stack_b->num_list[0] != NULL) 
 	{
 		if ((*stack_b->num_list[0] > *stack_a->num_list[0])
@@ -129,8 +109,6 @@ void	divide_and_sort(t_int_stack *stack_a, t_int_stack *stack_b)
 		else
 			rotate_one(stack_a);	
 	}
-
-	// // 5. finit la rotation de a pour mettre les num dans l'ordre
 	i = min_num_index(stack_a);
 	while (is_sorted(stack_a) < 0)
 		best_rotate(stack_a, i);

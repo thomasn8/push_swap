@@ -6,7 +6,7 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 21:21:47 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/11 12:51:42 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/11 12:56:14 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,6 @@ void	choose_algo(t_int_stack *stack_a, t_int_stack *stack_b)
 		one_stack_swapping(stack_a);
 	if (total > 7)
 		divide_and_sort(stack_a, stack_b);
-
-	// test with :
-	// make re && ARG="3 1 4 2 5"; ./push_swap $ARG
-	
-	// COMPARE ALGO
-		// TEST1 :
-		// (void) stack_b;
-		// if (total >= 4)
-		// 	one_stack_swapping(stack_a);
-
-		// TEST2 :
-		// if (total >= 4)
-		// 	divide_and_sort(stack_a, stack_b);
-
-		// TEST 3 :
-		// if (total >= 4)
-		// 	insertion_sort(stack_a, stack_b);
 }
 
 int	main(int ac, char **av)
@@ -62,16 +45,7 @@ int	main(int ac, char **av)
 	num_list = arg_checker(arg_list, num_list, arg_split);
 	stack_init(&stack_a, num_list, 'a');
 	stack_init(&stack_b, num_list, 'b');
-
-	// PRINT NUM LIST
-	// print_num_list(num_list);
-	
 	choose_algo(&stack_a, &stack_b);
-
-	// PRINT STACKS
-	// print_stack(&stack_a, 'a');
-	// print_stack(&stack_b, 'b');
-	
 	free(num_list);
 	free(stack_a.num_list);
 	free(stack_b.num_list);
