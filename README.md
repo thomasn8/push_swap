@@ -14,12 +14,12 @@
 * [ push_swap_tester](https://github.com/lmalki-h/push_swap_tester)
 
 ## Sorting performance 
-
+* 2 num:		white
 * 3 num:		white
 * 4 num:		blue
 * 5 num:		green
-* 6-32 num:		white
-* 33-36 num:	blue
-* 37-41 num:	green
-* 42-47 num:	yellow
-* +> 47 num:	red (in progress)
+* 6-31 num:		white
+* 32-36 num:	blue
+* 37-40 num:	green
+* 41-47 num:	yellow
+* +> 47 num:	red
