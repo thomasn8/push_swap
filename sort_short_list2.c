@@ -6,7 +6,7 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 16:38:27 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/11 13:01:41 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:51:19 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static int	min2_num_index(t_int_stack *stack)
 {
-	int **list;
+	int	**list;
 	int	i;
-	int min;
-	int min2;
-	
+	int	min;
+	int	min2;
+
 	list = stack->num_list;
 	i = -1;
 	min = 0;
@@ -40,19 +40,19 @@ static int	min2_num_index(t_int_stack *stack)
 	return (min2);
 }
 
-static void rev_sort_2num(t_int_stack *stack)
+static void	rev_sort_2num(t_int_stack *stack)
 {
 	if (*stack->num_list[0] < *stack->num_list[1])
 		swap_one(stack);
 }
 
-void sort_5num(t_int_stack *stack_a, t_int_stack *stack_b)
+void	sort_5num(t_int_stack *stack_a, t_int_stack *stack_b)
 {
-	int min;
-	int min_num;
-	int min2;
-	int min2_num;
-	
+	int	min;
+	int	min_num;
+	int	min2;
+	int	min2_num;
+
 	min = min_num_index(stack_a);
 	min_num = *stack_a->num_list[min];
 	min2 = min2_num_index(stack_a);

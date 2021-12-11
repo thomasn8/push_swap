@@ -6,7 +6,7 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 11:30:54 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/11 13:01:56 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:52:22 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int	stack_length(int **num_list)
 
 void	print_num_list(int *num_list)
 {
-	int i;
-	int n;
+	int	i;
+	int	n;
 
 	i = 1;
 	n = num_list[0];
@@ -47,7 +47,7 @@ void	print_num_list(int *num_list)
 
 void	print_stack(t_int_stack *stack, char name)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (name == 'a')
@@ -63,7 +63,7 @@ void	print_stack(t_int_stack *stack, char name)
 
 int	is_sorted(t_int_stack *stack_a)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (stack_a->num_list[i] != NULL)

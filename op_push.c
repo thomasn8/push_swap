@@ -6,7 +6,7 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 10:48:24 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/11 12:56:46 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:40:57 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	stack_shift_one_down(t_int_stack *stack)
 int	push(t_int_stack *stack_dst, t_int_stack *stack_src)
 {
 	int	src_exists;
-	int *temp;
+	int	*temp;
 
 	src_exists = 0;
 	if (*stack_src->num_list)

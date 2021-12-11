@@ -6,7 +6,7 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 13:47:07 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/11 13:02:33 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:53:58 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	min_num_index(t_int_stack *stack)
 {
-	int **list;
+	int	**list;
 	int	i;
-	int min;
-	
+	int	min;
+
 	list = stack->num_list;
 	i = 0;
 	min = 0;
@@ -32,10 +32,10 @@ int	min_num_index(t_int_stack *stack)
 
 int	max_num_index(t_int_stack *stack)
 {
-	int **list;
+	int	**list;
 	int	i;
-	int max;
-	
+	int	max;
+
 	list = stack->num_list;
 	i = 0;
 	max = 0;
@@ -51,8 +51,8 @@ int	max_num_index(t_int_stack *stack)
 int	direction_to_top(t_int_stack *stack, int i)
 {
 	int	length;
-	int middle;
-	int direction;
+	int	middle;
+	int	direction;
 
 	length = stack_length(stack->num_list);
 	middle = length / 2;
@@ -65,7 +65,7 @@ int	direction_to_top(t_int_stack *stack, int i)
 
 void	best_rotate(t_int_stack *stack, int i)
 {
-	int direction;
+	int	direction;
 
 	direction = direction_to_top(stack, i);
 	if (direction < 0)
@@ -73,7 +73,7 @@ void	best_rotate(t_int_stack *stack, int i)
 		while (i--)
 			rotate_one(stack);
 	}
-	else 
+	else
 	{
 		i = stack_length(stack->num_list) - i;
 		while (i--)
@@ -83,22 +83,22 @@ void	best_rotate(t_int_stack *stack, int i)
 
 int	is_sorted_unrotated(t_int_stack *stack_a, int min, int max)
 {
-	int i;
-	int len;
+	int	i;
+	int	len;
 
 	i = 0;
 	len = stack_length(stack_a->num_list);
 	while (stack_a->num_list[i] != NULL)
 	{
 		if (stack_a->num_list[i + 1] == NULL)
-			break;
-		if ((*stack_a->num_list[i] > *stack_a->num_list[i + 1]) 
+			break ;
+		if ((*stack_a->num_list[i] > *stack_a->num_list[i + 1])
 			&& !((*stack_a->num_list[i] == max) && (*stack_a->num_list[i + 1] == min)))
 			return (-1);
 		i++;
 	}
-	if ((*stack_a->num_list[0] < *stack_a->num_list[len-1])
-		&& !((*stack_a->num_list[0] == min) && (*stack_a->num_list[len-1] == max)))
+	if ((*stack_a->num_list[0] < *stack_a->num_list[len - 1])
+		&& !((*stack_a->num_list[0] == min) && (*stack_a->num_list[len - 1] == max)))
 		return (-1);
 	return (0);
 }

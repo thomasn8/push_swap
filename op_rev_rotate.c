@@ -6,7 +6,7 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 10:48:24 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/11 12:56:52 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:41:39 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ static void	stack_shift_one_down(t_int_stack *stack)
 int	rev_rotate_one(t_int_stack *stack)
 {
 	int	n;
-	int *temp;
-	
+	int	*temp;
+
 	n = stack_length(stack->num_list);
 	if (n > 1)
 	{
@@ -44,13 +44,12 @@ int	rev_rotate_one(t_int_stack *stack)
 	return (0);
 }
 
-
 int	rev_rotate_both(t_int_stack *stack_a, t_int_stack *stack_b)
 {
 	int	n_a;
 	int	n_b;
-	int *temp_a;
-	int *temp_b;
+	int	*temp_a;
+	int	*temp_b;
 
 	n_a = stack_length(stack_a->num_list);
 	if (n_a > 1)

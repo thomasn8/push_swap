@@ -6,19 +6,19 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 10:57:08 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/11 13:01:11 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:49:31 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void sort_2num(t_int_stack *stack)
+void	sort_2num(t_int_stack *stack)
 {
 	if (*stack->num_list[0] > *stack->num_list[1])
 		swap_one(stack);
 }
 
-void sort_3num(t_int_stack *stack)
+void	sort_3num(t_int_stack *stack)
 {
 	while (is_sorted(stack) < 0)
 	{
@@ -30,12 +30,12 @@ void sort_3num(t_int_stack *stack)
 	}
 }
 
-void sort_4num(t_int_stack *stack_a, t_int_stack *stack_b)
+void	sort_4num(t_int_stack *stack_a, t_int_stack *stack_b)
 {
-	int min;
-	int max;
-	int max_num;
-	
+	int	min;
+	int	max;
+	int	max_num;
+
 	push(stack_b, stack_a);
 	sort_3num(stack_a);
 	max = max_num_index(stack_a);

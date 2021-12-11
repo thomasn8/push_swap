@@ -6,7 +6,7 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 22:02:58 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/06 21:06:08 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:43:08 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 static void	swap(t_int_stack *stack, int stack_length)
 {
-	int *temp;
+	int	*temp;
 
 	if (stack_length > 1)
 	{
 		temp = *stack->num_list;
 		*stack->num_list = *(stack->num_list + 1);
-		*(stack->num_list + 1) = temp;		
+		*(stack->num_list + 1) = temp;
 	}
 }
 
 int	swap_one(t_int_stack *stack)
 {
 	int	n;
-	
+
 	n = stack_length(stack->num_list);
 	swap(stack, n);
 	ft_putchar_fd('s', 1);
@@ -42,7 +42,7 @@ int	swap_both(t_int_stack *stack_a, t_int_stack *stack_b)
 {
 	int	n_a;
 	int	n_b;
-	
+
 	n_a = stack_length(stack_a->num_list);
 	n_b = stack_length(stack_b->num_list);
 	swap(stack_a, n_a);

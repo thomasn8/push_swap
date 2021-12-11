@@ -6,7 +6,7 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 22:44:18 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/06 21:27:44 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:40:38 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	*arg_checker(char **arg, int *num_list, int arg_split)
 void	stack_init(t_int_stack *stack, int *num_list, char name)
 {
 	int	n;
-	int i;
+	int	i;
 
 	n = num_list[0];
 	stack->name = name;
@@ -113,12 +113,12 @@ void	stack_init(t_int_stack *stack, int *num_list, char name)
 	i = 0;
 	if (name == 'a')
 	{
-		while  (n--)
+		while (n--)
 			stack->num_list[i++] = ++num_list;
 	}
 	else
 	{
-		while  (n--)
+		while (n--)
 			stack->num_list[i++] = NULL;
 	}
 	stack->num_list[i] = NULL;

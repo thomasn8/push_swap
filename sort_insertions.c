@@ -6,7 +6,7 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 18:13:14 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/11 13:00:31 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:48:58 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,28 @@
 
 static void	search_push_rotate_getback(t_int_stack *stack_a, t_int_stack *stack_b, int min, int max)
 {
-	int i;
+	int	i;
 
 	while (is_sorted_unrotated(stack_a, min, max) < 0)
 	{
 		i = 0;
-		
-		if(!((*stack_a->num_list[i] == max) && (*stack_a->num_list[i + 1] == min)))
+		if (!((*stack_a->num_list[i] == max) && (*stack_a->num_list[i + 1] == min)))
 			sort_2num(stack_a);
-		if(is_sorted(stack_a) == 0)
-			break;
-		while ((stack_a->num_list[i + 1] != NULL 
-			&& *stack_a->num_list[i + 1] > *stack_a->num_list[i]) 
-			|| ((*stack_a->num_list[i] == max) 
-			&& (*stack_a->num_list[i + 1] == min)))
+		if (is_sorted(stack_a) == 0)
+			break ;
+		while ((stack_a->num_list[i + 1] != NULL
+				&& *stack_a->num_list[i + 1] > *stack_a->num_list[i])
+			|| ((*stack_a->num_list[i] == max)
+				&& (*stack_a->num_list[i + 1] == min)))
 			i++;
-		if ((stack_a->num_list[i + 1] == NULL) 
+		if ((stack_a->num_list[i + 1] == NULL)
 			&& (is_sorted_unrotated(stack_a, min, max) == 0))
-			break;
+			break ;
 		best_rotate(stack_a, i);
 		push(stack_b, stack_a);
 		i = 0;
-		while (*stack_b->num_list[0] > *stack_a->num_list[i] 
-			&& stack_a->num_list[i] != NULL 
+		while (*stack_b->num_list[0] > *stack_a->num_list[i]
+			&& stack_a->num_list[i] != NULL
 			&& !(*stack_b->num_list[0] == max && *stack_a->num_list[i] == min))
 			i++;
 		best_rotate(stack_a, i);
@@ -46,8 +45,8 @@ static void	search_push_rotate_getback(t_int_stack *stack_a, t_int_stack *stack_
 
 void	insertion_sort(t_int_stack *stack_a, t_int_stack *stack_b)
 {
-	int min;
-	int max;
+	int	min;
+	int	max;
 
 	min = *stack_a->num_list[min_num_index(stack_a)];
 	max = *stack_a->num_list[max_num_index(stack_a)];
