@@ -6,7 +6,7 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 21:37:06 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/11 17:12:26 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/12 20:20:42 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static void	finish_sort(t_int_stack *a, t_int_stack *b, int len)
 	}
 }
 
-void	divide_and_sort(t_int_stack *a, t_int_stack *b)
+void	divide_sort_and_fusion(t_int_stack *a, t_int_stack *b)
 {
 	int	len;
 	int	i;

@@ -6,7 +6,7 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 21:19:06 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/11 17:14:27 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/12 20:21:28 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,6 @@ void	one_stack_swapping(t_int_stack *a);
 void	insertion_sort(t_int_stack *a, t_int_stack *b);
 
 // big_list
-void	divide_and_sort(t_int_stack *a, t_int_stack *b);
+void	divide_sort_and_fusion(t_int_stack *a, t_int_stack *b);
 
 #endif
