@@ -53,18 +53,21 @@ void	sort_5num(t_int_stack *a, t_int_stack *b)
 	int	min2;
 	int	min2_num;
 
-	min = min_num_index(a);
-	min_num = *a->num_list[min];
-	min2 = min2_num_index(a);
-	min2_num = *a->num_list[min2];
-	while (**a->num_list != min_num && **a->num_list != min2_num)
-		rotate_one(a);
-	push(b, a);
-	while (**a->num_list != min_num && **a->num_list != min2_num)
-		rotate_one(a);
-	push(b, a);
-	sort_3num(a);
-	rev_sort_2num(b);
-	push(a, b);
-	push(a, b);
+	if (is_sorted(a) < 0)
+	{
+		min = min_num_index(a);
+		min_num = *a->num_list[min];
+		min2 = min2_num_index(a);
+		min2_num = *a->num_list[min2];
+		while (**a->num_list != min_num && **a->num_list != min2_num)
+			rotate_one(a);
+		push(b, a);
+		while (**a->num_list != min_num && **a->num_list != min2_num)
+			rotate_one(a);
+		push(b, a);
+		sort_3num(a);
+		rev_sort_2num(b);
+		push(a, b);
+		push(a, b);
+	}
 }

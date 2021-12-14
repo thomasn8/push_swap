@@ -37,16 +37,19 @@ void	sort_4num(t_int_stack *a, t_int_stack *b)
 	int	max;
 	int	max_num;
 
-	push(b, a);
-	sort_3num(a);
-	max = max_num_index(a);
-	max_num = *a->num_list[max];
-	while (**b->num_list > **a->num_list
-		&& **a->num_list != max_num)
-		rotate_one(a);
-	if (**b->num_list > max_num)
-		rotate_one(a);
-	push(a, b);
-	min = min_num_index(a);
-	best_rotate(a, min);
+	if (is_sorted(a) < 0)
+	{
+		push(b, a);
+		sort_3num(a);
+		max = max_num_index(a);
+		max_num = *a->num_list[max];
+		while (**b->num_list > **a->num_list
+			&& **a->num_list != max_num)
+			rotate_one(a);
+		if (**b->num_list > max_num)
+			rotate_one(a);
+		push(a, b);
+		min = min_num_index(a);
+		best_rotate(a, min);
+	}
 }
