@@ -16,8 +16,6 @@ char	**arg_list_create(int ac, char **av, int *arg_split)
 {
 	char	**arg_list;
 
-	if (ac < 2)
-		error(NULL_ARG);
 	if (ac == 2)
 		arg_list = ft_split(av[1], ' ');
 	else
@@ -78,8 +76,6 @@ int	*arg_checker(char **arg, int *num_list, int arg_split)
 
 	i = -1;
 	j = 0;
-	if (arg[0] == NULL)
-		error(NULL_ARG);
 	while (arg[++i])
 	{
 		if (arg[i][j] == '+' || arg[i][j] == '-')

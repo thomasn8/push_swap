@@ -93,22 +93,25 @@ void	divide_sort_and_fusion(t_int_stack *a, t_int_stack *b)
 	int	len;
 	int	i;
 
-	len = stack_length(a->num_list);
-	divide_stack(a, b, len);
-	parallel_sort(a, b);
-	finish_sort(a, b, len);
-	while (b->num_list[0] != NULL)
+	if (is_sorted(a) < 0)
 	{
-		if ((*b->num_list[0] > *a->num_list[0])
-			&& (*b->num_list[0] < *a->num_list[1]))
+		len = stack_length(a->num_list);
+		divide_stack(a, b, len);
+		parallel_sort(a, b);
+		finish_sort(a, b, len);
+		while (b->num_list[0] != NULL)
 		{
-			rotate_one(a);
-			push(a, b);
+			if ((*b->num_list[0] > *a->num_list[0])
+				&& (*b->num_list[0] < *a->num_list[1]))
+			{
+				rotate_one(a);
+				push(a, b);
+			}
+			else
+				rotate_one(a);
 		}
-		else
-			rotate_one(a);
+		i = min_num_index(a);
+		while (is_sorted(a) < 0)
+			best_rotate(a, i);
 	}
-	i = min_num_index(a);
-	while (is_sorted(a) < 0)
-		best_rotate(a, i);
 }
