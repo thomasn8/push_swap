@@ -22,7 +22,8 @@ void	choose_sorting_algo(t_int_stack *a, t_int_stack *b)
 	if (total == 3)
 		sort_3num(a);
 	if (total == 4)
-		sort_4num(a, b);
+		sort_radix(a, b);
+		// sort_4num(a, b);
 	if (total == 5)
 		sort_5num(a, b);
 	if (total >= 6 && total <= 7)

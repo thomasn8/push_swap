@@ -35,6 +35,12 @@ typedef struct s_int_stack
 	char	name;
 }	t_int_stack;
 
+typedef struct s_uint_stack
+{
+	unsigned int	**num_list;
+	char			name;
+}	t_uint_stack;
+
 // utils.c
 void	error(int error_code);
 int		stack_length(int **num_list);
@@ -89,7 +95,10 @@ void	one_stack_swapping(t_int_stack *a);
 // insertions
 void	insertion_sort(t_int_stack *a, t_int_stack *b);
 
-// big_list
+// fusion
 void	divide_sort_and_fusion(t_int_stack *a, t_int_stack *b);
+
+// radix
+void	sort_radix(t_int_stack *a, t_int_stack *b);
 
 #endif
