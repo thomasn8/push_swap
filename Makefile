@@ -22,6 +22,7 @@ ${NAME}:	${OBJS}
 			make --silent -C ${LIBFT_DIR}/
 			cp ${LIBFT_DIR}/$(LIBFT_A) .
 			$(CC) $(CFLAGS) -o $(NAME) ${OBJS} $(LIBFT)
+			make clean
 
 clean:
 			${RM} ${OBJS}

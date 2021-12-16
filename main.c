@@ -6,7 +6,7 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 21:21:47 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/12 20:22:46 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/16 23:24:55 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	choose_sorting_algo(t_int_stack *a, t_int_stack *b)
 	if (total >= 6 && total <= 7)
 		one_stack_swapping(a);
 	if (total > 7)
-		divide_sort_and_fusion(a, b);
+		sort_radix(a, b);
+		// divide_sort_and_fusion(a, b);
 }
 
 int	main(int ac, char **av)
