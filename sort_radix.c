@@ -1,26 +1,48 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_radix.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/16 23:49:27 by tnanchen          #+#    #+#             */
+/*   Updated: 2021/12/17 00:49:50 by tnanchen         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static unsigned int	*unsigned_list(t_int_stack *stack, int len, int min)
+static unsigned int	*unsigned_list(t_int_stack *stack, int len)
 {
-	int	i;
-	unsigned int *u_num_list;
+	int				i;
+	unsigned int	*u_num_list;
+	int				min;
+	// int				min2;
+	// unsigned int	final_num;
 
 	u_num_list = malloc(len * sizeof(unsigned int));
 	if (!u_num_list)
 		error(MALLOC_ERR);
+	min = *stack->num_list[min_num_index(stack)];
+	min *= -1;
+	// min2 = *stack->num_list[min2_num_index(stack)] + min;
+	// ft_printf("min : %d\n", min);
+	// ft_printf("min2 : %d\n", min2);
 	i = -1;
-	if (min < 0)
-		min *= -1;
-	else
-		min = 0;
 	while (stack->num_list[++i])
 		u_num_list[i] = *stack->num_list[i] + min;
+	// while (stack->num_list[++i])
+	// {
+	// 	final_num = *stack->num_list[i] + min;
+	// 	final_num = (final_num / min2) + (final_num % min2);
+	// 	u_num_list[i] = final_num;
+	// }
 	return (u_num_list);
 }
 
-static unsigned int	*positiv_num_stack(t_uint_stack *u_stack, t_int_stack *stack, unsigned int *u_num_list, int len)
+static unsigned int	*positiv_num_stack(t_uint_stack *u_stack,
+	t_int_stack *stack, unsigned int *u_num_list, int len)
 {
-	int				min;
 	int				i;
 	unsigned int	*u_num_list_ptr;
 
@@ -31,8 +53,7 @@ static unsigned int	*positiv_num_stack(t_uint_stack *u_stack, t_int_stack *stack
 	i = 0;
 	if (stack->name == 'a')
 	{
-		min = *stack->num_list[min_num_index(stack)];
-		u_num_list = unsigned_list(stack, len, min);
+		u_num_list = unsigned_list(stack, len);
 		u_num_list_ptr = u_num_list;
 		while (len--)
 			u_stack->num_list[i++] = u_num_list++;
@@ -56,7 +77,7 @@ static void	bitwise_check(t_uint_stack *u_a, t_uint_stack *u_b, int len)
 
 	max = *u_a->num_list[max_num_index((t_int_stack *)u_a)];
 	max_bits = 0;
-	while ((max >> max_bits) != 0) 
+	while ((max >> max_bits) != 0)
 		++max_bits;
 	i = -1;
 	j = -1;
@@ -64,7 +85,7 @@ static void	bitwise_check(t_uint_stack *u_a, t_uint_stack *u_b, int len)
 	{
 		while (++j < len)
 		{
-			if (((*u_a->num_list[0] >> i)&1) == 1)
+			if (((*u_a->num_list[0] >> i) & 1) == 1)
 				rotate_one((t_int_stack *)u_a);
 			else
 				push((t_int_stack *)u_b, (t_int_stack *)u_a);
@@ -87,6 +108,7 @@ void	sort_radix(t_int_stack *a, t_int_stack *b)
 	u_num_list = positiv_num_stack(&u_a, a, u_num_list, len);
 	positiv_num_stack(&u_b, b, u_num_list, len);
 	bitwise_check(&u_a, &u_b, len);
+	// print_stack((t_int_stack *)&u_a, 'a');
 	free(u_num_list);
 	free(u_a.num_list);
 	free(u_b.num_list);

@@ -6,13 +6,13 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 16:38:27 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/11 17:15:21 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/17 00:24:35 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	min2_num_index(t_int_stack *stack)
+int	min2_num_index(t_int_stack *stack)
 {
 	int	**list;
 	int	i;

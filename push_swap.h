@@ -6,7 +6,7 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 21:19:06 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/12 20:21:28 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/17 00:24:58 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	sort_4num(t_int_stack *a, t_int_stack *b);
 
 // short_list2
 void	sort_5num(t_int_stack *a, t_int_stack *b);
+int		min2_num_index(t_int_stack *stack);
 
 // swapping
 void	one_stack_swapping(t_int_stack *a);
