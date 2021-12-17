@@ -6,7 +6,7 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 23:49:27 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/17 13:52:19 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/17 17:55:39 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ static void	bitwise_check_silent(t_uint_stack *u_a, t_uint_stack *u_b, int len)
 
 static void	values_to_indexes(t_uint_stack *u_a, t_uint_stack *u_a_cpy, int len)
 {
-	int i;
-	int j;
-	
+	int	i;
+	int	j;
+
 	i = -1;
 	while (++i < len)
 	{

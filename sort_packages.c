@@ -6,7 +6,7 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 10:03:13 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/17 11:41:11 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/17 17:54:51 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ static void	rev_one_stack_swapping(t_int_stack *stack)
 		while (stack->num_list[i + 1] != NULL)
 		{
 			if (*stack->num_list[i] < *stack->num_list[i + 1]
-				&& !(*stack->num_list[i] == min && *stack->num_list[i + 1] == max))
+				&& !(*stack->num_list[i] == min
+					&& *stack->num_list[i + 1] == max))
 				break ;
 			i++;
 		}
@@ -78,31 +79,35 @@ static void	rev_one_stack_swapping(t_int_stack *stack)
 		best_rotate(stack, i);
 }
 
-/* pseudo code
-	// 1. push les 7 / 12 1er num sur b.
-	// 2. trier b dans l'ordre inverse.
-	// 3. push tous les num de b sur a.
-	// 4. tourner a de 7 / 12 rotations.
-	// 5. répéter le tout (stack_len / 7 ou stack_len / 12) fois
-		// $modulo = stack_len % 7 ou stack_len % 12
-		// push $modulo num sur b
-		// trier b dans l'ordre inverse.
-		// push tous les num de b sur a.
-	// 6. final sort : sort_fusion
-*/
+static void	sort_modulo_and_all(
+	t_int_stack *a, t_int_stack *b, int len, int package_size)
+{
+	int	modulo;
+	int	i;
+
+	modulo = len % package_size;
+	if (modulo != 0)
+	{
+		i = -1;
+		while (++i < modulo)
+			push(b, a);
+		rev_one_stack_swapping(b);
+		while (b->num_list[0] != NULL)
+			push(a, b);
+	}
+	divide_sort_and_fusion(a, b);
+}
 
 void	sort_packages(t_int_stack *a, t_int_stack *b)
 {
 	int	stack_len;
-	int package_size;
+	int	package_size;
 	int	packages_n;
-	int	modulo;
-	int i;
+	int	i;
 
 	stack_len = stack_length(a->num_list);
 	package_size = 20;
 	packages_n = (stack_len / package_size);
-	modulo = stack_len % package_size;
 	if (is_sorted(a) < 0)
 	{
 		while (packages_n--)
@@ -117,16 +122,6 @@ void	sort_packages(t_int_stack *a, t_int_stack *b)
 			while (++i < package_size)
 				rotate_one(a);
 		}
-		if (modulo != 0)
-		{
-			i = -1;
-			while (++i < modulo)
-				push(b, a);
-			rev_one_stack_swapping(b);
-			while (b->num_list[0] != NULL)
-				push(a, b);
-		}
-		divide_sort_and_fusion(a, b);
-		// sort_radix(a, b);
+		sort_modulo_and_all(a, b, stack_len, package_size);
 	}
 }
