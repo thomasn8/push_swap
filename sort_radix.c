@@ -6,7 +6,7 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 23:49:27 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/17 00:49:50 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/17 09:59:38 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,15 @@ static unsigned int	*unsigned_list(t_int_stack *stack, int len)
 	int				i;
 	unsigned int	*u_num_list;
 	int				min;
-	// int				min2;
-	// unsigned int	final_num;
 
 	u_num_list = malloc(len * sizeof(unsigned int));
 	if (!u_num_list)
 		error(MALLOC_ERR);
 	min = *stack->num_list[min_num_index(stack)];
 	min *= -1;
-	// min2 = *stack->num_list[min2_num_index(stack)] + min;
-	// ft_printf("min : %d\n", min);
-	// ft_printf("min2 : %d\n", min2);
 	i = -1;
 	while (stack->num_list[++i])
 		u_num_list[i] = *stack->num_list[i] + min;
-	// while (stack->num_list[++i])
-	// {
-	// 	final_num = *stack->num_list[i] + min;
-	// 	final_num = (final_num / min2) + (final_num % min2);
-	// 	u_num_list[i] = final_num;
-	// }
 	return (u_num_list);
 }
 
@@ -103,13 +92,15 @@ void	sort_radix(t_int_stack *a, t_int_stack *b)
 	t_uint_stack	u_a;
 	t_uint_stack	u_b;
 
-	u_num_list = NULL;
-	len = stack_length(a->num_list);
-	u_num_list = positiv_num_stack(&u_a, a, u_num_list, len);
-	positiv_num_stack(&u_b, b, u_num_list, len);
-	bitwise_check(&u_a, &u_b, len);
-	// print_stack((t_int_stack *)&u_a, 'a');
-	free(u_num_list);
-	free(u_a.num_list);
-	free(u_b.num_list);
+	if (is_sorted(a) < 0)
+	{
+		u_num_list = NULL;
+		len = stack_length(a->num_list);
+		u_num_list = positiv_num_stack(&u_a, a, u_num_list, len);
+		positiv_num_stack(&u_b, b, u_num_list, len);
+		bitwise_check(&u_a, &u_b, len);
+		free(u_num_list);
+		free(u_a.num_list);
+		free(u_b.num_list);
+	}
 }

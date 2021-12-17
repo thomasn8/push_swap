@@ -6,7 +6,7 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 21:19:06 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/17 00:24:58 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/17 10:28:25 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,8 @@ void	divide_sort_and_fusion(t_int_stack *a, t_int_stack *b);
 
 // radix
 void	sort_radix(t_int_stack *a, t_int_stack *b);
+
+// packages
+void	sort_packages(t_int_stack *a, t_int_stack *b);
 
 #endif
