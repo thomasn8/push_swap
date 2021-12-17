@@ -6,7 +6,7 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 21:19:06 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/17 12:52:52 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/17 13:52:41 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,10 +102,16 @@ void	insertion_sort(t_int_stack *a, t_int_stack *b);
 void	divide_sort_and_fusion(t_int_stack *a, t_int_stack *b);
 
 // radix
+unsigned int	*unsigned_list(t_int_stack *stack, int len);
+unsigned int	*positiv_num_stack(t_uint_stack *u_stack,
+	t_int_stack *stack, unsigned int *u_num_list, int len);
+void	bitwise_check(t_uint_stack *u_a, t_uint_stack *u_b, int len);
 void	sort_radix(t_int_stack *a, t_int_stack *b);
-void	sort_radix_v2(t_int_stack *a, t_int_stack *b);
 
-// packages
+// radix_v2
+void	sort_radix_indexes(t_int_stack *a, t_int_stack *b);
+
+// packages (unused)
 void	sort_packages(t_int_stack *a, t_int_stack *b);
 
 #endif

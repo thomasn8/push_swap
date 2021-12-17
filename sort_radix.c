@@ -6,13 +6,13 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 23:49:27 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/17 13:01:11 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/17 13:50:55 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static unsigned int	*unsigned_list(t_int_stack *stack, int len)
+unsigned int	*unsigned_list(t_int_stack *stack, int len)
 {
 	int				i;
 	unsigned int	*u_num_list;
@@ -29,7 +29,7 @@ static unsigned int	*unsigned_list(t_int_stack *stack, int len)
 	return (u_num_list);
 }
 
-static unsigned int	*positiv_num_stack(t_uint_stack *u_stack,
+unsigned int	*positiv_num_stack(t_uint_stack *u_stack,
 	t_int_stack *stack, unsigned int *u_num_list, int len)
 {
 	int				i;
@@ -57,7 +57,7 @@ static unsigned int	*positiv_num_stack(t_uint_stack *u_stack,
 	return (u_num_list_ptr);
 }
 
-static void	bitwise_check(t_uint_stack *u_a, t_uint_stack *u_b, int len)
+void	bitwise_check(t_uint_stack *u_a, t_uint_stack *u_b, int len)
 {
 	size_t	max;
 	int		max_bits;

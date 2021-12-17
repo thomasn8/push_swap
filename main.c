@@ -6,7 +6,7 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 21:21:47 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/17 13:37:22 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/17 13:52:22 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	choose_sorting_algo(t_int_stack *a, t_int_stack *b)
 	if (total > 7 && total <= 30)
 		divide_sort_and_fusion(a, b);
 	if (total > 30)
-		sort_radix_v2(a, b);
+		sort_radix_indexes(a, b);
 }
 
 int	main(int ac, char **av)
