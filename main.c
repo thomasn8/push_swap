@@ -6,7 +6,7 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 21:21:47 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/17 10:28:42 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/17 11:22:26 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,10 @@ void	choose_sorting_algo(t_int_stack *a, t_int_stack *b)
 		sort_5num(a, b);
 	if (total >= 6 && total <= 7)
 		one_stack_swapping(a);
-
-	if (total > 7)
-		sort_packages(a, b);
-	// if (total > 7 && total <= 30)
-	// 	divide_sort_and_fusion(a, b);
-	// if (total > 30)
-	// 	sort_radix(a, b);
-
+	if (total > 7 && total <= 30)
+		divide_sort_and_fusion(a, b);
+	if (total > 30)
+		sort_radix(a, b);
 }
 
 int	main(int ac, char **av)

@@ -6,23 +6,11 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 10:03:13 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/17 10:42:25 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/17 11:22:54 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/* pseudo code
-	// 1. push les 7 / 12 1er num sur b.
-	// 2. trier b dans l'ordre inverse.
-	// 3. push tous les num de b sur a.
-	// 4. tourner a de 7 / 12 rotations.
-	// 5. répéter le tout (stack_len / 7 ou stack_len / 12) fois
-		// $modulo = stack_len % 7 ou stack_len % 12
-		// push $modulo num sur b
-		// trier b dans l'ordre inverse.
-		// push tous les num de b sur a.
-	// 6. final sort : sort_fusion
-*/
 
 static int	is_rev_sorted_unrotated(t_int_stack *stack, int min, int max)
 {
@@ -64,47 +52,81 @@ static int	is_rev_sorted(t_int_stack *stack)
 	return (0);
 }
 
-static void	rev_one_stack_swapping(t_int_stack *a)
+static void	rev_one_stack_swapping(t_int_stack *stack)
 {
 	int	i;
 	int	min;
 	int	max;
 
-	min = *a->num_list[min_num_index(a)];
-	max = *a->num_list[max_num_index(a)];
-	while (is_rev_sorted_unrotated(a, min, max) < 0)
+	min = *stack->num_list[min_num_index(stack)];
+	max = *stack->num_list[max_num_index(stack)];
+	while (is_rev_sorted_unrotated(stack, min, max) < 0)
 	{
 		i = 0;
-		while (a->num_list[i + 1] != NULL)
+		while (stack->num_list[i + 1] != NULL)
 		{
-			if (*a->num_list[i] < *a->num_list[i + 1]
-				&& !(*a->num_list[i] == min && *a->num_list[i + 1] == max))
+			if (*stack->num_list[i] < *stack->num_list[i + 1]
+				&& !(*stack->num_list[i] == min && *stack->num_list[i + 1] == max))
 				break ;
 			i++;
 		}
-		best_rotate(a, i);
-		swap_one(a);
+		best_rotate(stack, i);
+		swap_one(stack);
 	}
-	print_stack(a, 'a');
-	i = max_num_index(a);
-	while (is_rev_sorted(a) < 0)
-		best_rotate(a, i);
+	i = max_num_index(stack);
+	while (is_rev_sorted(stack) < 0)
+		best_rotate(stack, i);
 }
+
+/* pseudo code
+	// 1. push les 7 / 12 1er num sur b.
+	// 2. trier b dans l'ordre inverse.
+	// 3. push tous les num de b sur a.
+	// 4. tourner a de 7 / 12 rotations.
+	// 5. répéter le tout (stack_len / 7 ou stack_len / 12) fois
+		// $modulo = stack_len % 7 ou stack_len % 12
+		// push $modulo num sur b
+		// trier b dans l'ordre inverse.
+		// push tous les num de b sur a.
+	// 6. final sort : sort_fusion
+*/
 
 void	sort_packages(t_int_stack *a, t_int_stack *b)
 {
+	int	stack_len;
 	int package_size;
+	int	packages_n;
+	int	modulo;
 	int i;
 
-	package_size = 7;
-	i = 0;
+	stack_len = stack_length(a->num_list);
+	package_size = 20;
+	packages_n = (stack_len / package_size);
+	modulo = stack_len % package_size;
 	if (is_sorted(a) < 0)
 	{
-		while (i < package_size)
-			push(b, a);
+		while (packages_n--)
+		{
+			i = -1;
+			while (++i < package_size)
+				push(b, a);
+			rev_one_stack_swapping(b);
+			while (b->num_list[0] != NULL)
+				push(a, b);
+			i = -1;
+			while (++i < package_size)
+				rotate_one(a);
+		}
+		if (modulo != 0)
+		{
+			i = -1;
+			while (++i < modulo)
+				push(b, a);
+			rev_one_stack_swapping(b);
+			while (b->num_list[0] != NULL)
+				push(a, b);
+		}
+		divide_sort_and_fusion(a, b);
+		// sort_radix(a, b);
 	}
-
-	// (void) b;
-	// rev_one_stack_swapping(a);
-	// print_stack(a, 'a');
 }
