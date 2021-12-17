@@ -6,7 +6,7 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 21:19:06 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/17 10:28:25 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/17 12:52:52 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	stack_init(t_int_stack *stack, int *num_list, char name);
 
 // op_push.c
 int		push(t_int_stack *dst, t_int_stack *src);
+int		push_radix(t_int_stack *dst, t_int_stack *src);
 
 // op_swap.c
 int		swap_one(t_int_stack *stack);
@@ -73,6 +74,7 @@ int		swap_both(t_int_stack *a, t_int_stack *b);
 // op_rotate.c
 int		rotate_one(t_int_stack *stack);
 int		rotate_both(t_int_stack *a, t_int_stack *b);
+int		rotate_radix(t_int_stack *stack);
 
 // op_rev_rotate.c
 int		rev_rotate_one(t_int_stack *stack);
@@ -101,6 +103,7 @@ void	divide_sort_and_fusion(t_int_stack *a, t_int_stack *b);
 
 // radix
 void	sort_radix(t_int_stack *a, t_int_stack *b);
+void	sort_radix_v2(t_int_stack *a, t_int_stack *b);
 
 // packages
 void	sort_packages(t_int_stack *a, t_int_stack *b);

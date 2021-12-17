@@ -6,7 +6,7 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 10:48:24 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/11 17:22:45 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/17 12:51:27 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,20 @@ int	rotate_both(t_int_stack *a, t_int_stack *b)
 		b->num_list[len_b - 1] = temp_b;
 	}
 	ft_putstr_fd("rr\n", 1);
+	return (0);
+}
+
+int	rotate_radix(t_int_stack *stack)
+{
+	int	len;
+	int	*temp;
+
+	len = stack_length(stack->num_list);
+	if (len > 1)
+	{
+		temp = stack->num_list[0];
+		shift_one_up(stack);
+		stack->num_list[len - 1] = temp;
+	}
 	return (0);
 }

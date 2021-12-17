@@ -6,7 +6,7 @@
 /*   By: tnanchen <thomasnanchen@hotmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 10:48:24 by tnanchen          #+#    #+#             */
-/*   Updated: 2021/12/11 17:06:37 by tnanchen         ###   ########.fr       */
+/*   Updated: 2021/12/17 12:51:35 by tnanchen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,25 @@ int	push(t_int_stack *dst, t_int_stack *src)
 	ft_putchar_fd('p', 1);
 	ft_putchar_fd(dst->name, 1);
 	ft_putchar_fd('\n', 1);
+	if (src_exists)
+		return (0);
+	return (-1);
+}
+
+int	push_radix(t_int_stack *dst, t_int_stack *src)
+{
+	int	src_exists;
+	int	*temp;
+
+	src_exists = 0;
+	if (*src->num_list)
+	{
+		temp = *src->num_list;
+		stack_shift_one_up(src);
+		stack_shift_one_down(dst);
+		*dst->num_list = temp;
+		src_exists = 1;
+	}
 	if (src_exists)
 		return (0);
 	return (-1);
